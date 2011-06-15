@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent" android:background="@drawable/background_coming_soon" android:orientation="vertical">
+ 	<LinearLayout android:layout_width="fill_parent" android:id="@+id/linearLayout1" android:layout_height="wrap_content" android:gravity="bottom" android:layout_weight="1" android:background="@drawable/woodbackgroundblack" android:orientation="vertical">
+ 		<TextView android:layout_height="wrap_content" android:layout_width="match_parent" android:text="This is a Beta release, we will add additional functionality later." android:id="@+id/textView1" android:gravity="center"></TextView>
+ 		<TextView android:layout_height="wrap_content" android:layout_width="match_parent" android:text="Please email us at andriosapps@gmail.com with any comments / concerns / requests" android:id="@+id/textView2" android:gravity="center"></TextView>
+ 		<LinearLayout android:layout_width="wrap_content" android:id="@+id/linearLayout2" android:layout_height="match_parent" android:layout_weight="1"></LinearLayout>
+ 		
+ 		<com.google.ads.AdView 
+		xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+		android:id="@+id/comingSoonAdView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        ads:adUnitId="a14df827682b908"
+        ads:adSize="BANNER"
+        android:layout_weight="0" />
+ 	
+ 	</LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent" android:orientation="vertical" android:id="@+id/ll1" android:background="@drawable/woodbackgroundblack">
+    
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout2" android:layout_weight="0" android:gravity="center">
+    </LinearLayout>
+    <ViewFlipper android:layout_weight="1" android:id="@+id/viewFlipper1" android:layout_width="fill_parent" android:layout_height="15dip">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:id="@+id/linearLayout3">
+            <TextView android:layout_height="wrap_content" android:text="Selected Players" android:id="@+id/textView2" android:layout_width="match_parent" android:gravity="center"></TextView>
+            <ListView android:layout_weight="1" android:layout_width="fill_parent" android:id="@+id/playerSelectActivityAvailableListView" android:layout_height="15dip"></ListView>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:id="@+id/linearLayout4">
+            <TextView android:layout_height="wrap_content" android:text="All Contacts" android:id="@+id/textView4" android:layout_width="match_parent" android:gravity="center"></TextView>
+            <ListView android:layout_width="fill_parent" android:layout_height="fill_parent" android:id="@+id/playerSelectActivityContactsListView"></ListView>
+        </LinearLayout>
+    </ViewFlipper>
+    
+       <com.google.ads.AdView 
+    	xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    	android:id="@+id/playerSelectAdView" 
+    	android:layout_width="fill_parent" 
+    	android:layout_weight="0" 
+    	android:layout_height="wrap_content"
+    	ads:adUnitId="a14df827682b908"
+        ads:adSize="BANNER"/>
+    <LinearLayout android:layout_weight="0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout1">
+        <LinearLayout android:layout_height="match_parent" android:layout_width="wrap_content" android:id="@+id/linearLayout5" android:layout_weight="1" android:gravity="center">
+            <Button android:text="Select Players" android:id="@+id/playerSelectActivityAddBTN" android:layout_height="wrap_content" android:layout_width="125dip"></Button>
+        </LinearLayout>
+        <LinearLayout android:layout_height="match_parent" android:layout_width="wrap_content" android:id="@+id/linearLayout6" android:layout_weight="1" android:gravity="center">
+            <Button android:text="Play" android:layout_height="wrap_content" android:layout_width="125dip" android:id="@+id/playerSelectActivityPlayBTN"></Button>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

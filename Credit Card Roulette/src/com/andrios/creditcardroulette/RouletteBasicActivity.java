@@ -12,6 +12,7 @@ import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 import android.app.Activity;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,6 +36,7 @@ public class RouletteBasicActivity extends Activity{
 	AdView adView;
 	AdRequest request;
 	GoogleAnalyticsTracker tracker;
+	MediaPlayer mp;
 	
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,8 +88,16 @@ public class RouletteBasicActivity extends Activity{
 					if(value < 15){
 						chosen = true;
 						try{
-						MediaPlayer mp = MediaPlayer.create(RouletteBasicActivity.this, R.raw.gunfire);  
+						mp = MediaPlayer.create(RouletteBasicActivity.this, R.raw.gunfire);  
 						  mp.start();
+						  mp.setOnCompletionListener(new OnCompletionListener() {
+
+		                        public void onCompletion(MediaPlayer mp) {
+		                            // TODO Auto-generated method stub
+		                            mp.release();
+		                        }
+
+		                    });
 						}catch(Exception e){
 							e.printStackTrace();
 						}
@@ -97,8 +107,17 @@ public class RouletteBasicActivity extends Activity{
 						imageview.setBackgroundResource(R.drawable.shooting_target2);
 					}else{
 						try{
-						MediaPlayer mp = MediaPlayer.create(RouletteBasicActivity.this, R.raw.dry_fire);  
+						mp = MediaPlayer.create(RouletteBasicActivity.this, R.raw.dry_fire);  
 						  mp.start();
+						  mp.setOnCompletionListener(new OnCompletionListener() {
+
+		                        public void onCompletion(MediaPlayer mp) {
+		                            // TODO Auto-generated method stub
+		                            mp.release();
+		                        }
+
+		                    });
+
 						}catch(Exception e){
 							e.printStackTrace();
 						}

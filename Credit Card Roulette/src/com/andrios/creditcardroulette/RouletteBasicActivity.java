@@ -28,7 +28,7 @@ public class RouletteBasicActivity extends Activity{
 
 	ArrayList<String> players;
 	Button fireBTN;
-	TextView nameLBL;
+	TextView nameLBL, billTXT;
 	LinearLayout imageview;
 	int currentPlayer = 0;
 	ViewFlipper flipper;//Used to Show animation between Back / Front of card.
@@ -37,6 +37,7 @@ public class RouletteBasicActivity extends Activity{
 	AdRequest request;
 	GoogleAnalyticsTracker tracker;
 	MediaPlayer mp;
+	double bill;
 	
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +61,7 @@ public class RouletteBasicActivity extends Activity{
 	private void getExtras() {
 		Intent intent = this.getIntent();
 		players = (ArrayList<String>) intent.getSerializableExtra("players");
-		
+		bill = intent.getDoubleExtra("bill", 0.00);
 		
 		
 	}
@@ -68,6 +69,9 @@ public class RouletteBasicActivity extends Activity{
 	private void setConnections() {
 		fireBTN = (Button) findViewById(R.id.rouletteBasicActivityFireBTN);
 		nameLBL = (TextView) findViewById(R.id.rouletteBasicActivityNameLBL);
+		billTXT = (TextView) findViewById(R.id.rouletteBasicActivityBillTXT);
+		billTXT.setText("$"+Double.toString(bill));
+		
 		imageview = (LinearLayout) findViewById(R.id.rouletteBasicActivityImageView);
 		flipper = (ViewFlipper) findViewById(R.id.viewFlipper1); 
 		flipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_in));

@@ -20,7 +20,14 @@
         </LinearLayout>
     </ViewFlipper>
     <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout1" android:layout_weight="0" android:gravity="center">
+        <LinearLayout android:id="@+id/linearLayout2" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="150dip">
+            <TextView android:text="" android:id="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+        </LinearLayout>
         <Button android:text="Pull Trigger" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/rouletteBasicActivityFireBTN"></Button>
+        <LinearLayout android:id="@+id/linearLayout3" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center" android:layout_width="150dip">
+            <TextView android:text="Bill" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+            <TextView android:id="@+id/rouletteBasicActivityBillTXT" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="TextView"></TextView>
+        </LinearLayout>
     </LinearLayout>
    
 </LinearLayout>

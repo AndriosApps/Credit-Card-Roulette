@@ -135,8 +135,9 @@ public class PlayerSelectActivity extends Activity {
 							Toast.LENGTH_SHORT).show();
 				}else{
 					Intent intent = new Intent(v.getContext(),
-							RouletteBasicActivity.class);
+							TipCalcActivity.class);
 					intent.putExtra("players", available);
+					intent.putExtra("game", true);
 					
 					startActivity(intent);
 				}

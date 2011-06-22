@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent" android:orientation="vertical" android:background="@drawable/woodbackgroundblack">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout1" android:gravity="center" android:orientation="vertical" android:layout_weight="1">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout2" android:layout_weight="1">
+            <TextView android:text="Bill Amount" android:layout_width="100dip" android:layout_height="wrap_content" android:id="@+id/textView2"></TextView>
+            <LinearLayout android:layout_width="50dip" android:layout_height="match_parent" android:id="@+id/LinearLayout01"></LinearLayout>
+            <EditText 
+            	android:layout_width="100dip" 
+            	android:layout_height="wrap_content" 
+            	android:id="@+id/tipCalcBillTXT" 
+            	android:inputType="phone"
+            	android:selectAllOnFocus="true">
+            	</EditText>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout6" android:layout_weight="1">
+            <TextView android:text="Tip Percent [%]" android:layout_width="100dip" android:layout_height="wrap_content" android:id="@+id/textView3"></TextView>
+            <Button  android:background="@drawable/minus" android:layout_weight="0" android:layout_height="50dip" android:layout_width="50dip" android:id="@+id/tipCalcTipPercentDownBTN"></Button>
+            <TextView android:layout_width="100dip" android:layout_height="wrap_content" android:id="@+id/tipCalcTipPercentTXT" android:gravity="center" android:textSize="18dip"></TextView>
+            <Button  android:background="@drawable/plus" android:layout_weight="0" android:layout_height="50dip" android:layout_width="50dip" android:id="@+id/tipCalcTipPercentUpBTN"></Button>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout7" android:layout_weight="1">
+            <TextView android:text="Tip Amount" android:layout_width="100dip" android:layout_height="wrap_content" android:id="@+id/textView4"></TextView>
+            <Button  android:background="@drawable/minus" android:layout_weight="0" android:layout_height="50dip" android:layout_width="50dip" android:id="@+id/tipCalcTipAmountDownBTN"></Button>
+            <TextView android:layout_width="100dip" android:layout_height="wrap_content" android:id="@+id/tipCalcTipTXT" android:gravity="center" android:textSize="18dip"></TextView>
+            <Button  android:background="@drawable/plus" android:layout_weight="0" android:layout_height="50dip" android:layout_width="50dip" android:id="@+id/tipCalcTipAmountUpBTN"></Button>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout8" android:layout_weight="1">
+            <TextView android:text="Total Amount" android:layout_width="100dip" android:layout_height="wrap_content" android:id="@+id/textView5"></TextView>
+            <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout9" android:layout_width="50dip"></LinearLayout>
+            <TextView android:layout_height="wrap_content" android:layout_width="100dip" android:id="@+id/tipCalcTotalTXT" android:gravity="center" android:textSize="18dip"></TextView>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout3" android:gravity="center" android:layout_weight="0" android:orientation="vertical" android:layout_height="100dip">
+        <Button android:text="Next" android:id="@+id/tipCalcNextBTN" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+    </LinearLayout>
+</LinearLayout>

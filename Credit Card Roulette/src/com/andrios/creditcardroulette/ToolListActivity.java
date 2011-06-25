@@ -28,19 +28,19 @@ public class ToolListActivity extends Activity {
        
         setOnClickListeners();
         setTracker();
-        //adView = (AdView)this.findViewById(R.id.playerSelectAdView);
+        adView = (AdView)this.findViewById(R.id.toolListAdView);
 	      
 	    request = new AdRequest();
 		request.setTesting(false);
-		//adView.loadAd(request);
-		
+		adView.loadAd(request);
+		 
 		
     }
 	
 	private void setConnections() {
 		tipCalcBTN = (Button)findViewById(R.id.toolListActivityTipCalcBTN);
 
-		splitCalcBTN = (Button)findViewById(R.id.toolListActivitySplitCalcBTN);
+		//splitCalcBTN = (Button)findViewById(R.id.toolListActivitySplitCalcBTN);
 		
 	}
 
@@ -61,7 +61,7 @@ public class ToolListActivity extends Activity {
 
 	public void onResume(){
 		super.onResume();
-		tracker.trackPageView("Player Select");
+		tracker.trackPageView("Tool List");
 	}
 	
 	public void onPause(){

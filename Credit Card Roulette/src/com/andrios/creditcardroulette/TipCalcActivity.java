@@ -44,11 +44,11 @@ public class TipCalcActivity extends Activity{
 	       
 	        setOnClickListeners();
 	        setTracker();
-	        //adView = (AdView)this.findViewById(R.id.playerSelectAdView);
+	        adView = (AdView)this.findViewById(R.id.tipCalcAdView);
 		      
 		    request = new AdRequest();
 			request.setTesting(false);
-			//adView.loadAd(request);
+			adView.loadAd(request);
 			
 			
 	    }
@@ -102,6 +102,7 @@ public class TipCalcActivity extends Activity{
 		        	calcTip();
 			          setTexts();
 			          billTXT.clearFocus();
+			          billTXT.requestFocus();
 		        }catch(Exception e){
 		        	Toast.makeText(TipCalcActivity.this, "Ensure Format is Correct", Toast.LENGTH_SHORT).show();
 		        	
@@ -149,6 +150,9 @@ public class TipCalcActivity extends Activity{
 
 			public void onClick(View arg0) {
 				tip -= 0.50;
+				if(tip <= 0.0){
+					tip = 0.0;
+				}
 				total = bill + tip;
 				setTexts();
 			}
@@ -191,7 +195,12 @@ public class TipCalcActivity extends Activity{
 
 		public void onResume(){
 			super.onResume();
-			tracker.trackPageView("Player Select");
+			if(game){
+				tracker.trackPageView("Tip Calculator Game Mode");
+			}else{
+				tracker.trackPageView("Tip Calculator");
+			}
+			
 		}
 		
 		public void onPause(){

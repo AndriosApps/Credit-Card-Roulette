@@ -9,9 +9,7 @@
             <Button  android:background="@drawable/tip_calc_icon" android:layout_width="100dip" android:layout_height="100dip" android:id="@+id/toolListActivityTipCalcBTN"></Button>
             <TextView android:text="Tip Calculator" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
         </LinearLayout>
-        <LinearLayout android:id="@+id/linearLayout4" android:layout_height="match_parent" android:layout_width="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
-            <Button android:background="@drawable/dinner_bill" android:layout_height="100dip" android:layout_width="100dip" android:id="@+id/toolListActivitySplitCalcBTN"></Button>
-            <TextView android:text="Tip + Split Calculator" android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+        <LinearLayout android:id="@+id/linearLayout4" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical" android:layout_width="100dip">
         </LinearLayout>
     </LinearLayout>
     <LinearLayout android:id="@+id/linearLayout2" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_weight="1">
@@ -19,5 +17,15 @@
         </LinearLayout>
         <LinearLayout android:id="@+id/linearLayout6" android:layout_height="match_parent" android:layout_width="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
         </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout7" android:layout_height="wrap_content">
+    	<com.google.ads.AdView 
+	    	xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+	    	android:id="@+id/toolListAdView" 
+	    	android:layout_width="fill_parent" 
+	    	android:layout_weight="0" 
+	    	android:layout_height="wrap_content"
+	    	ads:adUnitId="a14df827682b908"
+	        ads:adSize="BANNER"/>
     </LinearLayout>
 </LinearLayout>

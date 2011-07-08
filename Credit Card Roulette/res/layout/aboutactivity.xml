@@ -16,9 +16,9 @@
         	android:gravity="center" 
         	android:text="Currently We offer a basic tip calculator and a version of CCR which is much like Russian Roulette." android:layout_height="wrap_content"  android:id="@+id/TextView02" android:layout_width="wrap_content" android:textSize="18dip"></TextView>
     </LinearLayout>
-    <LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/linearLayout4" android:layout_weight="1" android:gravity="center">
-        <TextView android:gravity="center" android:text="If you like the idea of this app, rate it or send us an email at andriosapps@gmail.com telling us what you think, we'll add more options later" android:layout_height="wrap_content"  android:id="@+id/TextView02" android:layout_width="wrap_content" android:textSize="18dip"></TextView>
-    
+    <LinearLayout android:layout_weight="1" android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout4">
+        <TextView android:layout_height="wrap_content" android:textSize="18dip" android:gravity="center" android:text="If you like the idea of this app, rate it here:" android:id="@+id/TextView02" android:layout_width="wrap_content"></TextView>
+        <Button android:layout_height="wrap_content" android:text="Rate" android:layout_width="wrap_content" android:background="@drawable/grey_button" android:id="@+id/aboutActivityRateBTN"></Button>
     </LinearLayout>
         	<com.google.ads.AdView 
 		xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"

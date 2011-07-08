@@ -5,12 +5,18 @@ import com.google.ads.AdView;
 import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 public class AboutActivity extends Activity {
 	
 	   AdView adView;
 	   AdRequest request;
+	   Button rateBTN;
 
 		GoogleAnalyticsTracker tracker;
 	
@@ -25,10 +31,32 @@ public class AboutActivity extends Activity {
 	    request = new AdRequest();
 		request.setTesting(false);
 		adView.loadAd(request);
-        
+        setConnections();
+        setOnClickListeners();
+		
       //TODO
         setTracker();
     }
+    
+  
+
+	private void setConnections(){
+    	rateBTN = (Button) findViewById(R.id.aboutActivityRateBTN);
+    }
+	
+	  private void setOnClickListeners() {
+			rateBTN.setOnClickListener(new OnClickListener(){
+
+				public void onClick(View v) {
+					Intent intent = new Intent(Intent.ACTION_VIEW);
+					intent.setData(Uri.parse("market://details?id=com.andrios.creditcardroulette"));
+					startActivity(intent);
+
+				}
+				
+			});
+			
+		}
 	private void setTracker() {
 		tracker = GoogleAnalyticsTracker.getInstance();
 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent" android:orientation="vertical" android:background="@drawable/woodbackgroundblack">
+    <TextView android:id="@+id/textView3" android:layout_height="wrap_content" android:layout_width="match_parent" android:text="Tools" android:gravity="center" android:textSize="20dip"></TextView>
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_weight="1">
+        <LinearLayout android:id="@+id/linearLayout3" android:layout_height="match_parent" android:layout_width="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+            <Button  android:background="@drawable/tip_calc_icon" android:layout_width="100dip" android:layout_height="100dip" android:id="@+id/toolListActivityTipCalcBTN"></Button>
+            <TextView android:text="Tip Calculator" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/linearLayout4" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical" android:layout_width="100dip">
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/linearLayout2" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_weight="1">
+        <LinearLayout android:id="@+id/linearLayout5" android:layout_height="match_parent" android:layout_width="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+        </LinearLayout>
+        <LinearLayout android:id="@+id/linearLayout6" android:layout_height="match_parent" android:layout_width="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout7" android:layout_height="wrap_content">
+    	<com.google.ads.AdView 
+	    	xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+	    	android:id="@+id/toolListAdView" 
+	    	android:layout_width="fill_parent" 
+	    	android:layout_weight="0" 
+	    	android:layout_height="wrap_content"
+	    	ads:adUnitId="a14df827682b908"
+	        ads:adSize="BANNER"/>
+    </LinearLayout>
+</LinearLayout>

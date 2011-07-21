@@ -25,7 +25,7 @@ public class MainActivity extends TabActivity {
         Intent intent;
         Resources res = getResources(); 
         
-        //Setup for Russian Roulette Tab (Tab 0)
+        //Setup for Games Tab (Tab 0)
         intent = new Intent().setClass(this, PlayerSelectActivity.class);
         
         mTabHost.addTab(mTabHost.newTabSpec("Game").setIndicator("",res.getDrawable(R.drawable.revolver))

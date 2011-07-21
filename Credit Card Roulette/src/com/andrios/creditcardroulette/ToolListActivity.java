@@ -40,7 +40,7 @@ public class ToolListActivity extends Activity {
 	private void setConnections() {
 		tipCalcBTN = (Button)findViewById(R.id.toolListActivityTipCalcBTN);
 
-		//splitCalcBTN = (Button)findViewById(R.id.toolListActivitySplitCalcBTN);
+		splitCalcBTN = (Button)findViewById(R.id.toolListActivitySplitCalcBTN);
 		
 	}
 
@@ -50,6 +50,18 @@ public class ToolListActivity extends Activity {
 			public void onClick(View v) {
 				Intent intent = new Intent(v.getContext(),
 						TipCalcActivity.class);
+				
+				startActivity(intent);
+				
+			}
+			
+		});
+		
+		splitCalcBTN.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View v) {
+				Intent intent = new Intent(v.getContext(),
+						SplitCalcActivity.class);
 				
 				startActivity(intent);
 				

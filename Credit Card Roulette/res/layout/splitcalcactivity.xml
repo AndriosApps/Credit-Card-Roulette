@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent" android:orientation="vertical" android:background="@drawable/woodbackgroundblack">
+    <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout4" android:layout_weight="0" android:layout_height="75px">
+    	<com.google.ads.AdView 
+	    	xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+	    	android:id="@+id/splitCalcAdView" 
+	    	android:layout_width="fill_parent" 
+	    	android:layout_weight="0" 
+	    	android:layout_height="wrap_content"
+	    	ads:adUnitId="a14df827682b908"
+	        ads:adSize="BANNER"/>
+    </LinearLayout>
+   
+   
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout1" android:gravity="center" android:orientation="vertical" android:layout_weight="1">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout2" android:layout_weight="1">
+            <TextView android:text="Bill Amount" android:layout_width="100dip" android:layout_height="wrap_content" android:id="@+id/textView2"></TextView>
+            <LinearLayout android:layout_width="50dip" android:layout_height="match_parent" android:id="@+id/LinearLayout01"></LinearLayout>
+            <EditText 
+            	android:layout_width="100dip" 
+            	android:layout_height="wrap_content" 
+            	android:id="@+id/splitCalcBillTXT" 
+            	android:inputType="phone"
+            	android:selectAllOnFocus="true">
+            	</EditText>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout6" android:layout_weight="1">
+            <TextView android:text="Tip Percent [%]" android:layout_width="100dip" android:layout_height="wrap_content" android:id="@+id/textView3"></TextView>
+            <Button  android:background="@drawable/minus" android:layout_weight="0" android:layout_height="50dip" android:layout_width="50dip" android:id="@+id/splitCalcTipPercentDownBTN"></Button>
+            <TextView android:layout_width="100dip" android:layout_height="wrap_content" android:id="@+id/splitCalcTipPercentTXT" android:gravity="center" android:textSize="18dip"></TextView>
+            <Button  android:background="@drawable/plus" android:layout_weight="0" android:layout_height="50dip" android:layout_width="50dip" android:id="@+id/splitCalcTipPercentUpBTN"></Button>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout7" android:layout_weight="1">
+            <TextView android:text="Tip Amount" android:layout_width="100dip" android:layout_height="wrap_content" android:id="@+id/textView4"></TextView>
+            <Button  android:background="@drawable/minus" android:layout_weight="0" android:layout_height="50dip" android:layout_width="50dip" android:id="@+id/splitCalcTipAmountDownBTN"></Button>
+            <TextView android:layout_width="100dip" android:layout_height="wrap_content" android:id="@+id/splitCalcTipTXT" android:gravity="center" android:textSize="18dip"></TextView>
+            <Button  android:background="@drawable/plus" android:layout_weight="0" android:layout_height="50dip" android:layout_width="50dip" android:id="@+id/splitCalcTipAmountUpBTN"></Button>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout8" android:layout_height="wrap_content" android:layout_weight="1">
+            <TextView android:layout_width="100dip" android:text="Total Amount" android:layout_height="wrap_content" android:id="@+id/textView5"></TextView>
+            <LinearLayout android:layout_width="50dip" android:id="@+id/linearLayout9" android:layout_height="match_parent"></LinearLayout>
+            <TextView android:layout_width="100dip" android:text="" android:layout_height="wrap_content" android:gravity="center" android:textSize="18dip" android:id="@+id/splitCalcTotalTXT"></TextView>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:id="@+id/LinearLayout02" android:layout_height="wrap_content" android:layout_weight="1">
+            <TextView android:layout_width="100dip" android:text="People" android:layout_height="wrap_content" android:id="@+id/TextView02"></TextView>
+            <Button android:layout_width="50dip" android:background="@drawable/minus" android:layout_height="50dip" android:layout_weight="0" android:id="@+id/splitCalcPeopleDownBTN"></Button>
+            <TextView android:layout_width="100dip" android:text="" android:layout_height="wrap_content" android:gravity="center" android:textSize="18dip" android:id="@+id/splitCalcPeopleTXT"></TextView>
+            <Button android:layout_width="50dip" android:background="@drawable/plus" android:layout_height="50dip" android:layout_weight="0" android:id="@+id/splitCalcPeopleUpBTN"></Button>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:id="@+id/LinearLayout04" android:layout_height="wrap_content" android:layout_weight="1">
+            <TextView android:layout_width="100dip" android:text="Split Amount" android:layout_height="wrap_content" android:id="@+id/TextView04"></TextView>
+            <LinearLayout android:layout_width="50dip" android:id="@+id/LinearLayout03" android:layout_height="match_parent"></LinearLayout>
+            <TextView android:layout_width="100dip" android:text="" android:layout_height="wrap_content" android:gravity="center" android:textSize="18dip" android:id="@+id/splitCalcSplitTXT"></TextView>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout3" android:gravity="center" android:layout_weight="0" android:orientation="vertical" android:layout_height="75dip">
+        <Button android:text="Next" android:id="@+id/splitCalcNextBTN" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+    </LinearLayout>
+</LinearLayout>

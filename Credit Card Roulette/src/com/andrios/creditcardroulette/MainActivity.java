@@ -25,14 +25,9 @@ public class MainActivity extends TabActivity {
         Intent intent;
         Resources res = getResources(); 
         
-        //Setup for Games Tab (Tab 0)
-        intent = new Intent().setClass(this, PlayerSelectActivity.class);
-        
-        mTabHost.addTab(mTabHost.newTabSpec("Game").setIndicator("",res.getDrawable(R.drawable.revolver))
-        		.setContent(intent));
         
       //Setup for Table Roulette Tab (Tab 1)
-        intent = new Intent().setClass(this, ComingSoonActivity.class);
+        intent = new Intent().setClass(this, GamesListActivity.class);
         
         mTabHost.addTab(mTabHost.newTabSpec("Game").setIndicator("",res.getDrawable(R.drawable.icon2))
         		.setContent(intent));

@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="match_parent" android:orientation="vertical" android:background="@drawable/woodbackgroundblack">
-    <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout4" android:layout_height="wrap_content">
+    <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout4" android:layout_height="75px" android:layout_weight="0">
     	<com.google.ads.AdView 
 	    	xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
 	    	android:id="@+id/tipCalcAdView" 
@@ -45,7 +45,7 @@
             <TextView android:layout_height="wrap_content" android:layout_width="100dip" android:id="@+id/tipCalcTotalTXT" android:gravity="center" android:textSize="18dip"></TextView>
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout3" android:gravity="center" android:layout_weight="0" android:orientation="vertical" android:layout_height="100dip">
+    <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout3" android:gravity="center" android:layout_weight="0" android:orientation="vertical" android:layout_height="75dip">
         <Button android:text="Next" android:id="@+id/tipCalcNextBTN" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
     </LinearLayout>
 </LinearLayout>

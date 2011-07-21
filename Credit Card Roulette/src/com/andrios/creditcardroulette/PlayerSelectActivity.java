@@ -66,8 +66,10 @@ public class PlayerSelectActivity extends Activity {
 	   	        String name = cur.getString(
 	                           cur.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
 	   	        
+	   	        if(name != null){
+	   	        	contacts.add(name);
+	   	        }
 	   	        
-	   	        contacts.add(name);
             }
     	}
     }
@@ -92,14 +94,17 @@ public class PlayerSelectActivity extends Activity {
 	private void setAdapters(){
 		contactsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, contacts);
 		contactsLV.setAdapter(contactsAdapter);
-		contactsAdapter.sort(new Comparator<String>() {
+		
+			contactsAdapter.sort(new Comparator<String>() {
 
-			public int compare(String object1, String object2) {
-				return object1.compareToIgnoreCase(
-						object2);
-			}
+				public int compare(String object1, String object2) {
+					return object1.compareToIgnoreCase(
+							object2);
+				}
 
-		});
+			});
+		
+		
 		contactsAdapter.setNotifyOnChange(true);
 		
 		availableAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, available);

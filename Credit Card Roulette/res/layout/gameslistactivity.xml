@@ -3,11 +3,11 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="match_parent" android:orientation="vertical" android:background="@drawable/woodbackgroundblack">
-    <TextView android:id="@+id/textView3" android:layout_height="wrap_content" android:layout_width="match_parent" android:text="Tools" android:gravity="center" android:textSize="20dip"></TextView>
+    <TextView android:id="@+id/textView3" android:layout_height="wrap_content" android:layout_width="match_parent" android:text="Games" android:gravity="center" android:textSize="20dip"></TextView>
     <LinearLayout android:id="@+id/linearLayout1" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_weight="1">
         <LinearLayout android:id="@+id/linearLayout3" android:layout_height="match_parent" android:layout_width="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
-            <Button  android:background="@drawable/tip_calc_icon" android:layout_width="100dip" android:layout_height="100dip" android:id="@+id/toolListActivityTipCalcBTN"></Button>
-            <TextView android:text="Tip Calculator" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+            <Button  android:layout_width="100dip" android:layout_height="100dip" android:id="@+id/gamesListActivityRussianBTN" android:background="@drawable/revolver"></Button>
+            <TextView android:text="Russian Roulette" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
         </LinearLayout>
         <LinearLayout android:id="@+id/linearLayout4" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical" android:layout_width="100dip">
         </LinearLayout>

@@ -2,7 +2,7 @@
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
-  android:layout_height="fill_parent" android:orientation="vertical" android:id="@+id/ll1" android:background="@drawable/woodbackgroundblack">
+  android:layout_height="fill_parent" android:orientation="vertical" android:background="@drawable/woodbackgroundblack" android:id="@+id/ll">
     
     <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout2" android:layout_weight="0" android:gravity="center">
     </LinearLayout>
@@ -26,11 +26,14 @@
     	ads:adUnitId="a14df827682b908"
         ads:adSize="BANNER"/>
     <LinearLayout android:layout_weight="0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout1">
-        <LinearLayout android:layout_height="match_parent" android:layout_width="wrap_content" android:id="@+id/linearLayout5" android:layout_weight="1" android:gravity="center">
-            <Button android:text="Select Players" android:id="@+id/playerSelectActivityAddBTN" android:layout_height="wrap_content" android:layout_width="125dip"></Button>
+        <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout5" android:layout_weight="1" android:layout_width="75dip" android:gravity="center">
+            <Button android:text="Select Players" android:id="@+id/playerSelectActivityAddBTN" android:layout_width="75dip" android:layout_height="60dip"></Button>
         </LinearLayout>
-        <LinearLayout android:layout_height="match_parent" android:layout_width="wrap_content" android:id="@+id/linearLayout6" android:layout_weight="1" android:gravity="center">
-            <Button android:text="Play" android:layout_height="wrap_content" android:layout_width="125dip" android:id="@+id/playerSelectActivityPlayBTN"></Button>
+        <LinearLayout android:id="@+id/linearLayout7" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="75dip" android:gravity="center">
+            <Button android:text="Clear History" android:layout_width="75dip" android:layout_height="60dip" android:id="@+id/selectedPlayersActivityClearBTN"></Button>
+        </LinearLayout>
+        <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout6" android:layout_weight="1" android:layout_width="75dip" android:gravity="center">
+            <Button android:text="Play" android:id="@+id/playerSelectActivityPlayBTN" android:layout_width="75dip" android:layout_height="60dip"></Button>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

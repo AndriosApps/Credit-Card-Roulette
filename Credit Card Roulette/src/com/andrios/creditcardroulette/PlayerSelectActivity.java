@@ -1,8 +1,12 @@
 package com.andrios.creditcardroulette;
 
 
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Observable;
+import java.util.Observer;
 
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
@@ -25,14 +29,16 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class PlayerSelectActivity extends Activity {
+public class PlayerSelectActivity extends Activity implements Observer {
 
-	Button addBTN, playBTN;
+	Button addBTN, playBTN, clearBTN;
 	ViewFlipper flipper;//Used to Show animation between Back / Front of card.
-	ArrayList<String> contacts, available, selected;
+	ArrayList<Person> contacts;
+	ArrayList<Person> available;
 	ListView contactsLV, availableLV;
-	ArrayAdapter<String> contactsAdapter, availableAdapter;
-
+	ArrayAdapter<Person> contactsAdapter;
+	ArrayAdapter<Person> availableAdapter;
+	AndriosData mData;
 	GoogleAnalyticsTracker tracker;
 	AdView adView;
 	AdRequest request;
@@ -43,11 +49,7 @@ public class PlayerSelectActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.playerselectactivity);
         
-        setConnections();
-        queryContacts();
         
-        setAdapters();
-        setOnClickListeners();
         setTracker();
         adView = (AdView)this.findViewById(R.id.playerSelectAdView);
 	      
@@ -55,8 +57,36 @@ public class PlayerSelectActivity extends Activity {
 		request.setTesting(false);
 		adView.loadAd(request);
     }
+    
+    public void onStart(){
+    	getExtras();
+        setConnections();
+    	System.out.println("Player Select");
+    	super.onStart();
+    	
+        queryContacts();
+        
+        setAdapters();
+        setOnClickListeners();
+       
+    }
+    
+ 
+    
 
-    private void queryContacts(){
+    private void getExtras() {
+    	/*
+    	Intent intent = this.getIntent();
+		mData = (AndriosData) intent.getSerializableExtra("data");
+		mData.addObserver(this);	
+		mData.clearHistory();
+		*/
+    	readData();
+    	
+	}
+
+	private void queryContacts(){
+		
     	ContentResolver cr = getContentResolver();
         Cursor cur = cr.query(ContactsContract.Contacts.CONTENT_URI,
                    null, null, null, null);
@@ -67,7 +97,15 @@ public class PlayerSelectActivity extends Activity {
 	                           cur.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
 	   	        
 	   	        if(name != null){
-	   	        	contacts.add(name);
+	   	        	Person p = new Person(name, id);
+	   	        	
+	   	        	int index = mData.checkPerson(p);
+	   	        	if(index != -1){
+	   	        		contacts.add(mData.getPerson(index));
+	   	        	}else{
+	   	        		contacts.add(p);
+	   	        	}
+	   	        	
 	   	        }
 	   	        
             }
@@ -79,6 +117,7 @@ public class PlayerSelectActivity extends Activity {
 		// TODO Auto-generated method stub
 		addBTN = (Button) findViewById(R.id.playerSelectActivityAddBTN);
 		playBTN = (Button) findViewById(R.id.playerSelectActivityPlayBTN);
+		clearBTN = (Button) findViewById(R.id.selectedPlayersActivityClearBTN);
 		flipper = (ViewFlipper) findViewById(R.id.viewFlipper1); 
 		flipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_in));
 	    flipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_out));  
@@ -86,20 +125,21 @@ public class PlayerSelectActivity extends Activity {
 	    contactsLV = (ListView) findViewById(R.id.playerSelectActivityContactsListView);
 	    availableLV = (ListView) findViewById(R.id.playerSelectActivityAvailableListView);
 	    
-	    contacts = new ArrayList<String>();
-	    available = new ArrayList<String>();
+	    contacts = new ArrayList<Person>();
+	    available = new ArrayList<Person>();
 	}
 	
 
 	private void setAdapters(){
-		contactsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, contacts);
+		contactsAdapter = new ArrayAdapter<Person>(this, android.R.layout.simple_list_item_1, contacts);
 		contactsLV.setAdapter(contactsAdapter);
 		
-			contactsAdapter.sort(new Comparator<String>() {
+			contactsAdapter.sort(new Comparator<Person>() {
 
-				public int compare(String object1, String object2) {
-					return object1.compareToIgnoreCase(
-							object2);
+				public int compare(Person object1, Person object2) {
+					
+					return object1.getName().compareToIgnoreCase(
+							object2.getName());
 				}
 
 			});
@@ -107,7 +147,7 @@ public class PlayerSelectActivity extends Activity {
 		
 		contactsAdapter.setNotifyOnChange(true);
 		
-		availableAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, available);
+		availableAdapter = new ArrayAdapter<Person>(this, android.R.layout.simple_list_item_1, available);
 		availableLV.setAdapter(availableAdapter);
 	
 		availableAdapter.setNotifyOnChange(true);
@@ -116,7 +156,7 @@ public class PlayerSelectActivity extends Activity {
 	}
 	
 	private void setOnClickListeners() {
-		// TODO Auto-generated method stub
+		
 		addBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
@@ -143,10 +183,24 @@ public class PlayerSelectActivity extends Activity {
 							TipCalcActivity.class);
 					intent.putExtra("players", available);
 					intent.putExtra("game", true);
-					
+					intent.putExtra("data", mData);
 					startActivity(intent);
 				}
 				
+				
+			}
+			
+		});
+		
+		clearBTN.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View arg0) {
+				//TODO Add Error Checking (ensure user wants to do this here)
+				contacts.clear();
+				available.clear();
+				mData.clearHistory();
+				mData.write(PlayerSelectActivity.this);
+				onStart();
 				
 			}
 			
@@ -158,15 +212,15 @@ public class PlayerSelectActivity extends Activity {
 					long arg3) {
 				 
 
-				String s = (String) contactsAdapter.getItem(row);
+				Person p = (Person) contactsAdapter.getItem(row);
 			
-				contactsAdapter.remove(s);
-				availableAdapter.add(s);
-				availableAdapter.sort(new Comparator<String>() {
+				contactsAdapter.remove(p);
+				availableAdapter.add(p);
+				availableAdapter.sort(new Comparator<Person>() {
 
-					public int compare(String object1, String object2) {
-						return object1.compareToIgnoreCase(
-								object2);
+					public int compare(Person object1, Person object2) {
+						return object1.getName().compareToIgnoreCase(
+								object2.getName());
 					}
 
 				});
@@ -182,15 +236,15 @@ public class PlayerSelectActivity extends Activity {
 					long arg3) {
 				 
 
-				String s = (String) availableAdapter.getItem(row);
+				Person p = (Person) availableAdapter.getItem(row);
 			
-				availableAdapter.remove(s);
-				contactsAdapter.add(s);
-				contactsAdapter.sort(new Comparator<String>() {
+				availableAdapter.remove(p);
+				contactsAdapter.add(p);
+				contactsAdapter.sort(new Comparator<Person>() {
 
-					public int compare(String object1, String object2) {
-						return object1.compareToIgnoreCase(
-								object2);
+					public int compare(Person object1, Person object2) {
+						return object1.getName().compareToIgnoreCase(
+								object2.getName());
 					}
 
 				});
@@ -219,6 +273,28 @@ public class PlayerSelectActivity extends Activity {
 	    
 		
 	}
+
+	public void update(Observable observable, Object data) {
+		System.out.println("PLAYER SELECT SAW AN UPDATE");
+		
+	}
 	
-	
+	private void readData() {
+		try {
+			FileInputStream fis = openFileInput("data");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+
+			mData = (AndriosData) ois.readObject();
+			ois.close();
+			fis.close();
+		} catch (Exception e) {
+			System.out.println("MAKING mDATA");
+			mData = new AndriosData(this);
+			
+			
+		}
+		mData.addObserver(this);
+		
+		
+	}
 }

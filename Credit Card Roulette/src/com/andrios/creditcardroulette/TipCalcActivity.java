@@ -28,12 +28,12 @@ public class TipCalcActivity extends Activity{
 	double tipPercent = 0.15;
 	double tip = 0.00;
 	double total = 0.00;
-	
+	AndriosData mData;
 	EditText billTXT;
 	TextView tipPercentTXT, tipTXT, totalTXT;
 	Button tipPercentUpBTN, tipPercentDownBTN, tipUpBTN, tipDownBTN, nextBTN;
 	boolean game;
-	ArrayList<String> available;
+	ArrayList<Person> available;
 	
 	 public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
@@ -56,8 +56,8 @@ public class TipCalcActivity extends Activity{
 		private void getExtras() {
 			Intent intent = this.getIntent();
 			game = intent.getBooleanExtra("game", false);
-			available = (ArrayList<String>) intent.getSerializableExtra("players");
-			
+			available = (ArrayList<Person>) intent.getSerializableExtra("players");
+			mData = (AndriosData) intent.getSerializableExtra("data");
 	}
 
 		private void setConnections() {
@@ -166,7 +166,9 @@ public class TipCalcActivity extends Activity{
 						RouletteBasicActivity.class);
 				intent.putExtra("players", available);
 				intent.putExtra("bill", total);
+				intent.putExtra("data", mData);
 				startActivity(intent);
+				TipCalcActivity.this.finish();
 				
 			}
 			

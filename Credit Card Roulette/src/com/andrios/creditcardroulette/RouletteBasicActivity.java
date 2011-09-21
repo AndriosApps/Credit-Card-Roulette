@@ -26,7 +26,7 @@ import android.widget.ViewFlipper;
 @SuppressWarnings("unchecked")
 public class RouletteBasicActivity extends Activity{
 
-	ArrayList<String> players;
+	ArrayList<Person> players;
 	Button fireBTN;
 	TextView nameLBL, billTXT;
 	LinearLayout imageview;
@@ -38,6 +38,7 @@ public class RouletteBasicActivity extends Activity{
 	GoogleAnalyticsTracker tracker;
 	MediaPlayer mp;
 	double bill;
+	AndriosData mData;
 	
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,9 +61,9 @@ public class RouletteBasicActivity extends Activity{
 	@SuppressWarnings("unchecked")
 	private void getExtras() {
 		Intent intent = this.getIntent();
-		players = (ArrayList<String>) intent.getSerializableExtra("players");
+		players = (ArrayList<Person>) intent.getSerializableExtra("players");
 		bill = intent.getDoubleExtra("bill", 0.00);
-		
+		mData = (AndriosData) intent.getSerializableExtra("data");
 		
 	}
 
@@ -77,7 +78,7 @@ public class RouletteBasicActivity extends Activity{
 		flipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_in));
 	    flipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_out));
 
-		nameLBL.setText(players.get(currentPlayer));
+		nameLBL.setText(players.get(currentPlayer).toString());
 		
 	}
 
@@ -105,8 +106,11 @@ public class RouletteBasicActivity extends Activity{
 						}catch(Exception e){
 							e.printStackTrace();
 						}
+						setMoneyChange(currentPlayer);
+						nameLBL.setText(players.get(currentPlayer).toString());
+						fireBTN.setEnabled(false);
 						Toast.makeText(RouletteBasicActivity.this,
-								players.get(currentPlayer)+" has this one. Thanks for Playing!",
+								players.get(currentPlayer).getName()+" has this one. Thanks for Playing!",
 								Toast.LENGTH_LONG).show();
 						imageview.setBackgroundResource(R.drawable.shooting_target2);
 					}else{
@@ -128,17 +132,34 @@ public class RouletteBasicActivity extends Activity{
 						getNextPlayer();
 					}
 				}else{
+
+					setMoneyChange(currentPlayer);
+					nameLBL.setText(players.get(currentPlayer).toString());
+				
 					Toast.makeText(RouletteBasicActivity.this,
-							players.get(currentPlayer)+" has this one. Thanks for Playing!",
+							players.get(currentPlayer).getName()+" has this one. Thanks for Playing!",
 							Toast.LENGTH_LONG).show();
 				}
 			
 				
 			}
+
+			
 			
 		});
 		
 		
+	}
+	private void setMoneyChange(int index) {
+		for(int i = 0; i< players.size(); i++){
+			if(i == index){
+				players.get(i).setLoss(bill);
+			}else{
+				players.get(i).setSaved(bill / players.size());
+			}
+			mData.setPerson(players.get(i));
+		}
+		mData.write(RouletteBasicActivity.this);
 	}
 	
 	private void getNextPlayer(){
@@ -147,7 +168,7 @@ public class RouletteBasicActivity extends Activity{
 			currentPlayer = 0;
 		}
 		flipper.showNext();
-		nameLBL.setText(players.get(currentPlayer));
+		nameLBL.setText(players.get(currentPlayer).toString());
 	}
 	
 	public void onResume(){

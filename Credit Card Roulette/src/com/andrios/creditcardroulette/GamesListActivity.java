@@ -13,12 +13,13 @@ import com.google.ads.AdView;
 public class GamesListActivity extends Activity {
 
 	Button russianBTN;
+	AndriosData mData;
 	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gameslistactivity);
         
-      
+        getExtras();
         setConnections();
        
         setOnClickListeners();
@@ -32,6 +33,11 @@ public class GamesListActivity extends Activity {
 		 */
 		
     }
+	 private void getExtras() {
+	    	Intent intent = this.getIntent();
+			mData = (AndriosData) intent.getSerializableExtra("data");
+				
+		}
 
 	private void setConnections() {
 		russianBTN = (Button) findViewById(R.id.gamesListActivityRussianBTN);
@@ -44,7 +50,7 @@ public class GamesListActivity extends Activity {
 			public void onClick(View arg0) {
 				Intent intent = new Intent(GamesListActivity.this,
 						PlayerSelectActivity.class);
-				
+				intent.putExtra("data", mData);
 				startActivity(intent);
 				
 			}

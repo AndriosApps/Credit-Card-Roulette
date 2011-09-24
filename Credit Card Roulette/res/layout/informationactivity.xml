@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent" android:background="@drawable/woodbackgroundblack" android:orientation="vertical">
+    <LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/linearLayout1" android:gravity="center" android:layout_weight="0">
+        <TextView 
+        android:text="About CC Roulette"  android:layout_height="wrap_content" android:id="@+id/textView1" android:layout_width="wrap_content" android:textSize="26dip"></TextView>
+    </LinearLayout>
+    <LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/linearLayout2" android:layout_weight="1" android:gravity="center">
+        <TextView 
+        	android:text="CCR offers games and tools for paying your dinner bill." android:layout_height="wrap_content"  android:id="@+id/TextView01" android:layout_width="wrap_content" android:gravity="center" android:textSize="18dip"></TextView>
+    </LinearLayout>
+    <LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/linearLayout3" android:layout_weight="1" android:gravity="center">
+        <TextView android:layout_height="wrap_content" android:text="Developer Information and Contact" android:id="@+id/textView2" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceLarge" android:layout_weight="1" android:gravity="center"></TextView>
+        <Button android:text="" android:background="@drawable/andrios" android:layout_width="50dip" android:layout_height="50dip" android:layout_weight="0" android:id="@+id/andriosBTN"></Button>
+    </LinearLayout>
+    <LinearLayout android:layout_weight="1" android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout4">
+        <TextView android:layout_height="wrap_content" android:textSize="18dip" android:gravity="center" android:text="Please take a moment to rate this app.  Feedback helps us make improvements!" android:id="@+id/TextView02" android:layout_width="wrap_content"></TextView>
+        <Button android:layout_height="wrap_content" android:text="Rate" android:layout_width="wrap_content" android:background="@drawable/grey_button" android:id="@+id/aboutActivityRateBTN"></Button>
+    </LinearLayout>
+        	<com.google.ads.AdView 
+		xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+		android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        ads:adUnitId="a14df827682b908"
+        ads:adSize="BANNER"
+        android:layout_weight="0" android:id="@+id/aboutAdView"/>
+</LinearLayout>

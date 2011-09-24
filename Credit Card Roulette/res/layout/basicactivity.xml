@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent" android:background="@drawable/woodbackgroundblack">
+    <LinearLayout android:layout_height="50dip" android:background="#000000" android:gravity="center|left" android:layout_width="match_parent" android:id="@+id/linearLayout2" android:layout_weight="0">
+        <TextView android:layout_height="wrap_content" android:textSize="22dip" android:text="Select Random Player" android:id="@+id/textView2" android:layout_width="wrap_content"></TextView>
+    </LinearLayout>
+    <ListView android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/basicActivityListView"></ListView>
+    
+</LinearLayout>

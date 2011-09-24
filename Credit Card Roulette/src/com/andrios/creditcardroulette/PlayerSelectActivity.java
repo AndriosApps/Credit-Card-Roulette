@@ -19,6 +19,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
@@ -42,11 +43,13 @@ public class PlayerSelectActivity extends Activity implements Observer {
 	GoogleAnalyticsTracker tracker;
 	AdView adView;
 	AdRequest request;
+	int gametype;
 	
 	/** Called when the activity is first created. */
 	 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.playerselectactivity);
         
         
@@ -75,12 +78,9 @@ public class PlayerSelectActivity extends Activity implements Observer {
     
 
     private void getExtras() {
-    	/*
+    	
     	Intent intent = this.getIntent();
-		mData = (AndriosData) intent.getSerializableExtra("data");
-		mData.addObserver(this);	
-		mData.clearHistory();
-		*/
+		intent.getIntExtra("gametype", -1);
     	readData();
     	
 	}
@@ -160,11 +160,7 @@ public class PlayerSelectActivity extends Activity implements Observer {
 		addBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				if(addBTN.getText().equals("Select Players")){
-					addBTN.setText("View Selected");
-				}else{
-					addBTN.setText("Select Players");
-				}
+				
 				flipper.showNext();
 				
 			}
@@ -183,8 +179,10 @@ public class PlayerSelectActivity extends Activity implements Observer {
 							TipCalcActivity.class);
 					intent.putExtra("players", available);
 					intent.putExtra("game", true);
+					intent.putExtra("gametype", gametype);
 					intent.putExtra("data", mData);
 					startActivity(intent);
+					PlayerSelectActivity.this.finish();
 				}
 				
 				

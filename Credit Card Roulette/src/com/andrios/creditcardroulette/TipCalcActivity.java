@@ -34,6 +34,7 @@ public class TipCalcActivity extends Activity{
 	Button tipPercentUpBTN, tipPercentDownBTN, tipUpBTN, tipDownBTN, nextBTN;
 	boolean game;
 	ArrayList<Person> available;
+	int gametype;
 	
 	 public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
@@ -56,6 +57,7 @@ public class TipCalcActivity extends Activity{
 		private void getExtras() {
 			Intent intent = this.getIntent();
 			game = intent.getBooleanExtra("game", false);
+			gametype = intent.getIntExtra("gametype", -1);
 			available = (ArrayList<Person>) intent.getSerializableExtra("players");
 			mData = (AndriosData) intent.getSerializableExtra("data");
 	}
@@ -162,13 +164,24 @@ public class TipCalcActivity extends Activity{
 		nextBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View v) {
-				Intent intent = new Intent(v.getContext(),
-						RouletteBasicActivity.class);
-				intent.putExtra("players", available);
-				intent.putExtra("bill", total);
-				intent.putExtra("data", mData);
-				startActivity(intent);
-				TipCalcActivity.this.finish();
+				if(gametype == 0){
+					Intent intent = new Intent(v.getContext(),
+							BasicActivity.class);
+					intent.putExtra("players", available);
+					intent.putExtra("bill", total);
+					intent.putExtra("data", mData);
+					startActivity(intent);
+					TipCalcActivity.this.finish();
+				}else if(gametype == 1){
+					Intent intent = new Intent(v.getContext(),
+							RouletteBasicActivity.class);
+					intent.putExtra("players", available);
+					intent.putExtra("bill", total);
+					intent.putExtra("data", mData);
+					startActivity(intent);
+					TipCalcActivity.this.finish();
+				}
+				
 				
 			}
 			

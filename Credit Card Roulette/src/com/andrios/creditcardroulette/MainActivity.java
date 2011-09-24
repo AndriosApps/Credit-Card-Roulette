@@ -10,6 +10,7 @@ import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.TabHost;
 
 public class MainActivity extends TabActivity implements Observer {
@@ -19,6 +20,7 @@ public class MainActivity extends TabActivity implements Observer {
    
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main);
         readData();
         setConnections();
@@ -46,7 +48,7 @@ public class MainActivity extends TabActivity implements Observer {
         		.setContent(intent));
         
         //Setup for Workout Tab (Tab 2)
-        intent = new Intent().setClass(this, AboutActivity.class);
+        intent = new Intent().setClass(this, InformationActivity.class);
         intent.putExtra("data", mData);
         mTabHost.addTab(mTabHost.newTabSpec("About").setIndicator("",res.getDrawable(R.drawable.abouticon))
         		.setContent(intent));

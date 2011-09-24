@@ -7,12 +7,16 @@
     <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout2" android:layout_weight="0" android:gravity="center">
     </LinearLayout>
     <ViewFlipper android:layout_weight="1" android:id="@+id/viewFlipper1" android:layout_width="fill_parent" android:layout_height="15dip">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:id="@+id/linearLayout3">
-            <TextView android:layout_height="wrap_content" android:text="Selected Players" android:id="@+id/textView2" android:layout_width="match_parent" android:gravity="center"></TextView>
-            <ListView android:layout_weight="1" android:layout_width="fill_parent" android:id="@+id/playerSelectActivityAvailableListView" android:layout_height="15dip"></ListView>
+        <LinearLayout android:id="@+id/LinearLayout01"  android:layout_height="fill_parent" android:layout_width="fill_parent" android:orientation="vertical" android:background="@drawable/woodbackgroundblack">
+            <LinearLayout android:layout_width="match_parent" android:background="#000000" android:id="@+id/linearLayout3" android:layout_height="50dip" android:gravity="center|left">
+                <TextView android:layout_height="wrap_content" android:textSize="22dip"  android:gravity="center" android:text="Selected Contacts" android:id="@+id/TextView01" android:layout_width="wrap_content"></TextView>
+            </LinearLayout>
+            <ListView android:layout_width="fill_parent" android:id="@+id/playerSelectActivityAvailableListView" android:layout_height="wrap_content"></ListView>
         </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:id="@+id/linearLayout4">
-            <TextView android:layout_height="wrap_content" android:text="All Contacts" android:id="@+id/textView4" android:layout_width="match_parent" android:gravity="center"></TextView>
+        <LinearLayout android:orientation="vertical"  android:layout_width="fill_parent" android:layout_height="fill_parent" android:id="@+id/linearLayout4" android:background="@drawable/woodbackgroundblack">
+            <LinearLayout android:layout_width="match_parent" android:background="#000000" android:id="@+id/linearLayout8" android:layout_height="50dip" android:gravity="center|left">
+                <TextView android:layout_height="wrap_content" android:gravity="center" android:textSize="22dip" android:text="Select Contacts" android:id="@+id/textView4" android:layout_width="wrap_content"></TextView>
+            </LinearLayout>
             <ListView android:layout_width="fill_parent" android:layout_height="fill_parent" android:id="@+id/playerSelectActivityContactsListView"></ListView>
         </LinearLayout>
     </ViewFlipper>
@@ -21,19 +25,18 @@
     	xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
     	android:id="@+id/playerSelectAdView" 
     	android:layout_width="fill_parent" 
-    	android:layout_weight="0" 
     	android:layout_height="wrap_content"
     	ads:adUnitId="a14df827682b908"
-        ads:adSize="BANNER"/>
-    <LinearLayout android:layout_weight="0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout1">
+        ads:adSize="BANNER" android:layout_weight="0"/>
+    <LinearLayout android:layout_weight="0" android:layout_width="fill_parent" android:background="#000000" android:id="@+id/linearLayout1" android:layout_height="50dip">
         <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout5" android:layout_weight="1" android:layout_width="75dip" android:gravity="center">
-            <Button android:text="Select Players" android:id="@+id/playerSelectActivityAddBTN" android:layout_width="75dip" android:layout_height="60dip"></Button>
+            <Button android:text=" " android:id="@+id/playerSelectActivityAddBTN" android:background="@drawable/user" android:gravity="center|top" android:paddingLeft="5dip" android:paddingTop="15dip" android:layout_height="50dip" android:layout_width="50dip"></Button>
         </LinearLayout>
         <LinearLayout android:id="@+id/linearLayout7" android:layout_height="match_parent" android:layout_weight="1" android:layout_width="75dip" android:gravity="center">
-            <Button android:text="Clear History" android:layout_width="75dip" android:layout_height="60dip" android:id="@+id/selectedPlayersActivityClearBTN"></Button>
+            <Button android:text=" " android:id="@+id/selectedPlayersActivityClearBTN" android:background="@drawable/refresh" android:layout_height="50dip" android:layout_width="50dip"></Button>
         </LinearLayout>
         <LinearLayout android:layout_height="match_parent" android:id="@+id/linearLayout6" android:layout_weight="1" android:layout_width="75dip" android:gravity="center">
-            <Button android:text="Play" android:id="@+id/playerSelectActivityPlayBTN" android:layout_width="75dip" android:layout_height="60dip"></Button>
+            <Button android:text=" " android:id="@+id/playerSelectActivityPlayBTN" android:background="@drawable/play" android:gravity="center|left" android:layout_height="50dip" android:layout_width="50dip" android:paddingLeft="10dip"></Button>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

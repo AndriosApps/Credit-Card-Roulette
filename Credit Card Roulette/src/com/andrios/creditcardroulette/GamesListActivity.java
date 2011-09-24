@@ -12,7 +12,7 @@ import com.google.ads.AdView;
 
 public class GamesListActivity extends Activity {
 
-	Button russianBTN;
+	Button russianBTN, traditionalBTN;
 	AndriosData mData;
 	
 	public void onCreate(Bundle savedInstanceState) {
@@ -41,16 +41,31 @@ public class GamesListActivity extends Activity {
 
 	private void setConnections() {
 		russianBTN = (Button) findViewById(R.id.gamesListActivityRussianBTN);
+		traditionalBTN = (Button) findViewById(R.id.gamesListActivityTraditionalBTN);
 		
 	}
 
 	private void setOnClickListeners() {
+		traditionalBTN.setOnClickListener(new OnClickListener(){
+
+			public void onClick(View arg0) {
+				Intent intent = new Intent(GamesListActivity.this,
+						PlayerSelectActivity.class);
+				intent.putExtra("data", mData);
+				intent.putExtra("gametype", 0);
+				startActivity(intent);
+				
+			}
+			
+		});
+		
 		russianBTN.setOnClickListener(new OnClickListener(){
 
 			public void onClick(View arg0) {
 				Intent intent = new Intent(GamesListActivity.this,
 						PlayerSelectActivity.class);
 				intent.putExtra("data", mData);
+				intent.putExtra("gametype", 1);
 				startActivity(intent);
 				
 			}

@@ -57,6 +57,25 @@ public class RouletteBasicActivity extends Activity{
 		request.setTesting(false);
 		adView.loadAd(request);
     }
+    
+	private void setTracker() {
+		tracker = GoogleAnalyticsTracker.getInstance();
+		tracker.start(this.getString(R.string.ga_api_key),
+				getApplicationContext());
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		tracker.trackPageView("/" + this.getLocalClassName());
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		tracker.dispatch();
+	}
+
 
 	@SuppressWarnings("unchecked")
 	private void getExtras() {
@@ -171,23 +190,6 @@ public class RouletteBasicActivity extends Activity{
 		nameLBL.setText(players.get(currentPlayer).toString());
 	}
 	
-	public void onResume(){
-		super.onResume();
-		tracker.trackPageView("Russian Game");
-	}
-	
-	public void onPause(){
-		super.onPause();
-		tracker.dispatch();
-	}
-	
-	private void setTracker() {
-		tracker = GoogleAnalyticsTracker.getInstance();
 
-	    // Start the tracker in manual dispatch mode...
-	    tracker.start("UA-23366060-4", this);
-	    
-		
-	}
 	
 }

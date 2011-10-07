@@ -2,6 +2,8 @@ package com.andrios.creditcardroulette;
 
 import java.util.ArrayList;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -21,6 +23,7 @@ public class BasicActivity extends Activity {
 	double bill;
 	AndriosData mData;
 	ArrayList<Person> players;
+	GoogleAnalyticsTracker tracker;
 	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,9 +34,10 @@ public class BasicActivity extends Activity {
        
         setOnClickListeners();
         rulesDialog();
-        /*
+        
         setTracker();
-        adView = (AdView)this.findViewById(R.id.toolListAdView);
+        /*
+         * adView = (AdView)this.findViewById(R.id.toolListAdView);
 	      
 	    request = new AdRequest();
 		request.setTesting(false);
@@ -41,6 +45,25 @@ public class BasicActivity extends Activity {
 		 */
 		
     }
+	
+	private void setTracker() {
+		tracker = GoogleAnalyticsTracker.getInstance();
+		tracker.start(this.getString(R.string.ga_api_key),
+				getApplicationContext());
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		tracker.trackPageView("/" + this.getLocalClassName());
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		tracker.dispatch();
+	}
+
 
 	private void getExtras() {
 		Intent intent = this.getIntent();

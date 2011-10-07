@@ -2,6 +2,8 @@ package com.andrios.creditcardroulette;
 
 import java.util.List;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
@@ -22,7 +24,7 @@ public class AboutActivity extends Activity {
 	
 	
 	Button facebookBTN, twitterBTN, emailBTN, marketBTN;
-	
+	GoogleAnalyticsTracker tracker;
 	
     /** Called when the activity is first created. */
     @Override
@@ -33,8 +35,27 @@ public class AboutActivity extends Activity {
         
         setConnections();
         setOnClickListeners();
-    
+        setTracker();
     }
+    
+	private void setTracker() {
+		tracker = GoogleAnalyticsTracker.getInstance();
+		tracker.start(this.getString(R.string.ga_api_key),
+				getApplicationContext());
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		tracker.trackPageView("/" + this.getLocalClassName());
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		tracker.dispatch();
+	}
+
 
 
 	private void setConnections() {
@@ -56,7 +77,7 @@ public class AboutActivity extends Activity {
 			     
 			    emailIntent .putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"andriosapps@gmail.com"});
 			     
-			    emailIntent .putExtra(android.content.Intent.EXTRA_SUBJECT, "Navy PRT Android App");
+			    emailIntent .putExtra(android.content.Intent.EXTRA_SUBJECT, "Credit Card Roulette Android App");
 			     
 			    //emailIntent .putExtra(android.content.Intent.EXTRA_TEXT, myBodyText);
 			     
@@ -70,7 +91,7 @@ public class AboutActivity extends Activity {
 
 			public void onClick(View v) {
 				Intent intent = new Intent(Intent.ACTION_VIEW);
-				intent.setData(Uri.parse("market://search?q=pub:AndriOS"));
+				intent.setData(Uri.parse("market://search?q=AndriOS OR EchoProductions"));
 				startActivity(intent);
 
 				

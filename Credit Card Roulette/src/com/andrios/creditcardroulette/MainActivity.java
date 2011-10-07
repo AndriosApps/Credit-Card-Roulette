@@ -5,6 +5,8 @@ import java.io.ObjectInputStream;
 import java.util.Observable;
 import java.util.Observer;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 
 import android.app.TabActivity;
 import android.content.Intent;
@@ -24,8 +26,12 @@ public class MainActivity extends TabActivity implements Observer {
         setContentView(R.layout.main);
         readData();
         setConnections();
+        
         mData.addObserver(this);
     }
+    
+
+
 
 	
 

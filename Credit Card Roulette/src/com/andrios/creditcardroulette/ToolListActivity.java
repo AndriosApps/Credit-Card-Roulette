@@ -18,12 +18,11 @@ public class ToolListActivity extends Activity {
 	AdRequest request;
 	Button tipCalcBTN, splitCalcBTN;
 	
-	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.toollistactivity);
         
-      
+        setTracker();
         setConnections();
        
         setOnClickListeners();
@@ -36,6 +35,24 @@ public class ToolListActivity extends Activity {
 		 
 		
     }
+	
+	private void setTracker() {
+		tracker = GoogleAnalyticsTracker.getInstance();
+		tracker.start(this.getString(R.string.ga_api_key),
+				getApplicationContext());
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		tracker.trackPageView("/" + this.getLocalClassName());
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		tracker.dispatch();
+	}
 	
 	private void setConnections() {
 		tipCalcBTN = (Button)findViewById(R.id.toolListActivityTipCalcBTN);
@@ -71,23 +88,6 @@ public class ToolListActivity extends Activity {
 		
 	}
 
-	public void onResume(){
-		super.onResume();
-		tracker.trackPageView("Tool List");
-	}
-	
-	public void onPause(){
-		super.onPause();
-		tracker.dispatch();
-	}
-	
-	private void setTracker() {
-		tracker = GoogleAnalyticsTracker.getInstance();
 
-	    // Start the tracker in manual dispatch mode...
-	    tracker.start("UA-23366060-4", this);
-	    
-		
-	}
 	
 }

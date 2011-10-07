@@ -27,23 +27,22 @@ public class ComingSoonActivity extends Activity{
 	
 	private void setTracker() {
 		tracker = GoogleAnalyticsTracker.getInstance();
-
-	    // Start the tracker in manual dispatch mode...
-	    tracker.start("UA-23366060-4", this);
-	    
-		
+		tracker.start(this.getString(R.string.ga_api_key),
+				getApplicationContext());
 	}
 
-
-	public void onResume(){
+	@Override
+	public void onResume() {
 		super.onResume();
-		tracker.trackPageView("Coming Soon");
+		tracker.trackPageView("/" + this.getLocalClassName());
 	}
-	
-	public void onPause(){
+
+	@Override
+	public void onPause() {
 		super.onPause();
 		tracker.dispatch();
 	}
+
 	
 }
 

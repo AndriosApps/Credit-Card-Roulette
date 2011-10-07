@@ -55,6 +55,25 @@ public class SplitCalcActivity extends Activity{
 			
 			
 	    }
+	 
+		private void setTracker() {
+			tracker = GoogleAnalyticsTracker.getInstance();
+			tracker.start(this.getString(R.string.ga_api_key),
+					getApplicationContext());
+		}
+
+		@Override
+		public void onResume() {
+			super.onResume();
+			tracker.trackPageView("/" + this.getLocalClassName());
+		}
+
+		@Override
+		public void onPause() {
+			super.onPause();
+			tracker.dispatch();
+		}
+	
 	
 		private void getExtras() {
 			Intent intent = this.getIntent();
@@ -229,28 +248,6 @@ public class SplitCalcActivity extends Activity{
 
 		
 
-		public void onResume(){
-			super.onResume();
-			if(game){
-				tracker.trackPageView("Tip Calculator Game Mode");
-			}else{
-				tracker.trackPageView("Tip Calculator");
-			}
-			
-		}
-		
-		public void onPause(){
-			super.onPause();
-			tracker.dispatch();
-		}
-		
-		private void setTracker() {
-			tracker = GoogleAnalyticsTracker.getInstance();
-
-		    // Start the tracker in manual dispatch mode...
-		    tracker.start("UA-23366060-4", this);
-		    
-			
-		}
+	
 	 
 }

@@ -2,4 +2,5 @@
 <resources>
     <string name="hello">Hello World, MainActivity!</string>
     <string name="app_name">Credit Card Roulette</string>
+    <string name="ga_api_key">UA-23366060-4</string>
 </resources>

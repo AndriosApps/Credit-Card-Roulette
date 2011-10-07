@@ -38,6 +38,25 @@ public class InformationActivity extends Activity {
         setTracker();
     }
     
+	private void setTracker() {
+		tracker = GoogleAnalyticsTracker.getInstance();
+		tracker.start(this.getString(R.string.ga_api_key),
+				getApplicationContext());
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		tracker.trackPageView("/" + this.getLocalClassName());
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		tracker.dispatch();
+	}
+
+    
   
 
 	private void setConnections(){
@@ -70,25 +89,7 @@ public class InformationActivity extends Activity {
 			});
 			
 		}
-	private void setTracker() {
-		tracker = GoogleAnalyticsTracker.getInstance();
 
-	    // Start the tracker in manual dispatch mode...
-	    tracker.start("UA-23366060-4", this);
-	    
-		
-	}
-	
-	public void onResume(){
-		super.onResume();
-		tracker.trackPageView("About Activity");
-	}
-	
-	public void onPause(){
-		super.onPause();
-		tracker.dispatch();
-	}
-	
 	
 	
 }
